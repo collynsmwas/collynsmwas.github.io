@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-  <link rel="stylesheet" href="style.css?v=21">
+  <link rel="stylesheet" href="style.css?v=22">
 </head>
 <body>
   <header class="titlebar">
@@ -24,17 +24,6 @@
   </header>
 
   <div class="shell">
-    <aside class="explorer">
-      <div class="explorer-head mono"><span>EXPLORER</span>
-        <span class="tree-actions"><button id="tree-expand" title="Expand all" aria-label="Expand all folders">⊞</button><button id="tree-collapse" title="Collapse all" aria-label="Collapse all folders">⊟</button></span></div>
-      <nav id="tree" class="tree mono" role="tree" aria-label="Sections"></nav>
-      <div class="outline-wrap">
-        <div class="explorer-head mono"><span>OUTLINE</span><span id="outline-file" class="outline-file"></span></div>
-        <div id="outline" class="outline mono"></div>
-      </div>
-      <nav id="social" class="social" aria-label="Profiles"></nav>
-    </aside>
-
     <main id="main">
       <section class="hero">
         <div class="hero-top">
@@ -45,6 +34,7 @@
               <p id="role" class="role"></p>
               <p id="group" class="group"></p>
               <dl id="contact" class="contact mono"></dl>
+              <nav id="social" class="social" aria-label="Profiles"></nav>
             </div>
           </div>
           <div class="cites" aria-label="Citations per year">
@@ -73,8 +63,6 @@
     </main>
   </div>
 
-  <div id="peek" class="peek" hidden></div>
-
   <div id="palette" class="palette" hidden>
     <div class="pal-box" role="dialog" aria-modal="true" aria-label="Command palette">
       <div class="pal-in mono"><span>&gt;</span><input id="pal-input" type="text" placeholder="jump to a section, open a paper, copy bibtex…" autocomplete="off" spellcheck="false" role="combobox" aria-controls="pal-list" aria-expanded="true"></div>
@@ -88,9 +76,9 @@
     <span id="loc"></span><span>UTF-8</span><a href="llms.txt">llms.txt</a>
   </footer>
 
-  <script src="content.js?v=21"></script>
-  <script src="markdown.js?v=21"></script>
-  <script src="bibtex.js?v=21"></script>
-  <script src="app.js?v=21"></script>
+  <script src="content.js?v=22"></script>
+  <script src="markdown.js?v=22"></script>
+  <script src="bibtex.js?v=22"></script>
+  <script src="app.js?v=22"></script>
 </body>
 </html>

@@ -156,118 +156,6 @@
 
   const md = window.siteToMarkdown(S);
 
-  // ---------- Explorer: collapsible file tree ----------
-  const FILETYPE = { md: ["M↓", "ft-md"], bib: ["{}", "ft-bib"], yaml: ["Y", "ft-yaml"], log: ["≡", "ft-log"], txt: ["≡", "ft-txt"] };
-  const textOf = (sel) => [...document.querySelectorAll(sel)].map((e) => e.textContent.trim());
-  const files = [
-    ...sections.map((s) => ({ ...s })),
-    { id: "agent", path: "llms.txt", lines: md.split("\n").length },
-  ];
-  const info = {
-    about: { peek: S.about[0].slice(0, 150) + "…" },
-    news: { count: S.news.length || null, peek: S.news.length ? S.news.slice(0, 3).map((n) => `${n.date}  ${n.text}`).join("\n") : "no news yet" },
-    publications: { count: nPubs, peek: textOf("#publications .pub .title").slice(0, 3).join("\n") },
-    teaching: { count: S.teaching.length, peek: S.teaching.slice(0, 3).map((t) => `${t.term}  ${t.title}`).join("\n") },
-    experience: { count: S.experience.length + S.education.length, peek: [...S.experience, ...S.education].map((e) => `${e.title}, ${e.org}`).join("\n") },
-    theses: { peek: "open for Bachelor & Master students\n→ read the guidelines first" },
-    agent: { peek: `plain-text version of this site for AI agents\n${md.split("\n").length} lines · click to open` },
-  };
-  let rows = `<div class="row folder" role="treeitem" aria-expanded="true" aria-level="1" data-dir="/" tabindex="0"><span class="chev">▸</span><span class="name">${esc(S.handle)}</span></div>`;
-  let lastDir = "";
-  for (const f of files) {
-    const parts = f.path.split("/");
-    const dir = parts.length > 1 ? parts[0] : "";
-    if (dir && dir !== lastDir) rows += `<div class="row folder" role="treeitem" aria-expanded="true" aria-level="2" data-dir="${dir}" data-in="/" tabindex="-1"><span class="chev">▸</span><span class="name">${esc(dir)}</span></div>`;
-    lastDir = dir;
-    const name = parts[parts.length - 1];
-    const [ic, cls] = FILETYPE[name.split(".").pop()] || ["·", ""];
-    const meta = info[f.id] || {};
-    rows += `<a class="row leaf${f.id === "agent" ? " llms" : ""}" role="treeitem" aria-level="${dir ? 3 : 2}" href="#${f.id}" data-id="${f.id}" data-in="${dir ? dir + " /" : "/"}" tabindex="-1">
-      <span class="ic ${cls}">${ic}</span><span class="name">${esc(name)}</span>
-      ${meta.count ? `<span class="count">${meta.count}</span>` : ""}${f.badge ? '<span class="dot" title="open"></span>' : ""}</a>`;
-  }
-  $("tree").innerHTML = rows;
-  const treeRows = [...$("tree").querySelectorAll(".row")];
-  const leaves = treeRows.filter((r) => r.classList.contains("leaf"));
-
-  // Folders: click the row (or press ←/→) to collapse and expand
-  const setFolder = (row, open) => {
-    row.setAttribute("aria-expanded", String(open));
-    const dir = row.dataset.dir;
-    treeRows.forEach((r) => {
-      if (!(r.dataset.in || "").split(" ").includes(dir)) return;
-      const closedAbove = treeRows.some((f) => f.classList.contains("folder") && f !== r &&
-        f.getAttribute("aria-expanded") === "false" && (r.dataset.in || "").split(" ").includes(f.dataset.dir));
-      r.classList.toggle("gone", closedAbove);
-    });
-  };
-  const toggleFolder = (row) => setFolder(row, row.getAttribute("aria-expanded") !== "true");
-  $("tree-collapse").onclick = () => treeRows.filter((r) => r.classList.contains("folder") && r.dataset.dir !== "/").forEach((r) => setFolder(r, false));
-  $("tree-expand").onclick = () => treeRows.filter((r) => r.classList.contains("folder")).forEach((r) => setFolder(r, true));
-
-  // Keyboard: ↑ ↓ move, → open folder or step in, ← close folder or go to parent, Enter/Space open
-  const visible = () => treeRows.filter((r) => !r.classList.contains("gone"));
-  const focusRow = (r) => { treeRows.forEach((x) => (x.tabIndex = -1)); r.tabIndex = 0; r.focus(); };
-  $("tree").addEventListener("keydown", (e) => {
-    const r = e.target.closest(".row"); if (!r) return;
-    const v = visible(), i = v.indexOf(r), isFolder = r.classList.contains("folder");
-    const open = r.getAttribute("aria-expanded") === "true";
-    const parent = () => treeRows.find((f) => f.classList.contains("folder") && f.dataset.dir === (r.dataset.in || "").split(" ")[0]);
-    const k = { ArrowDown: () => v[i + 1] && focusRow(v[i + 1]), ArrowUp: () => v[i - 1] && focusRow(v[i - 1]),
-      Home: () => focusRow(v[0]), End: () => focusRow(v[v.length - 1]),
-      ArrowRight: () => isFolder && (open ? v[i + 1] && focusRow(v[i + 1]) : setFolder(r, true)),
-      ArrowLeft: () => (isFolder && open ? setFolder(r, false) : parent() && focusRow(parent())),
-      Enter: () => (isFolder ? toggleFolder(r) : r.click()), " ": () => (isFolder ? toggleFolder(r) : r.click()) }[e.key];
-    if (k) { e.preventDefault(); k(); }
-  });
-  treeRows.filter((r) => r.classList.contains("folder")).forEach((r) => r.addEventListener("click", () => { toggleFolder(r); focusRow(r); }));
-
-  // Hover preview ("peek") next to the explorer
-  const peek = $("peek");
-  const showPeek = (r) => {
-    const m = info[r.dataset.id]; if (!m || !matchMedia("(hover: hover) and (min-width: 761px)").matches) return;
-    peek.innerHTML = `<div class="peek-head mono">${esc(r.querySelector(".name").textContent)}</div><pre class="mono">${esc(m.peek)}</pre>`;
-    const b = r.getBoundingClientRect();
-    peek.style.top = `${Math.min(b.top, innerHeight - 160)}px`;
-    peek.style.left = `${b.right + 14}px`;
-    peek.hidden = false;
-  };
-  leaves.forEach((r) => {
-    r.addEventListener("mouseenter", () => showPeek(r));
-    r.addEventListener("mouseleave", () => (peek.hidden = true));
-    r.addEventListener("blur", () => (peek.hidden = true));
-    r.addEventListener("click", () => (peek.hidden = true));
-  });
-
-  // Outline of the file currently in view
-  const outline = $("outline");
-  const buildOutline = (id) => {
-    const sec = $(id); if (!sec || id === "agent") { outline.innerHTML = ""; return; }
-    const items = [...sec.querySelectorAll(".body h3, .pub .title, .course .title, .entry .title, .log li .what")];
-    outline.innerHTML = items.length
-      ? items.map((el, i) => `<button class="${el.tagName === "H3" ? "o-head" : "o-item"}" data-i="${i}">${esc(el.textContent.replace(/^\/\/ |^## /, ""))}</button>`).join("")
-      : `<span class="o-none">no symbols in this file</span>`;
-    outline.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
-      const el = items[+b.dataset.i].closest(".pub, .course, .entry, li, h3");
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-      el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
-    }));
-    $("outline-file").textContent = files.find((f) => f.id === id)?.path.split("/").pop() || "";
-  };
-
-  let activeId = "";
-  const setActive = (id) => {
-    if (id === activeId) return;
-    activeId = id;
-    leaves.forEach((a) => { const on = a.dataset.id === id; a.classList.toggle("active", on); on ? a.setAttribute("aria-current", "true") : a.removeAttribute("aria-current"); });
-    buildOutline(id);
-  };
-  const obs = new IntersectionObserver((items) => {
-    for (const it of items) if (it.isIntersecting) setActive(it.target.id);
-  }, { rootMargin: "-15% 0px -75% 0px" });
-  document.querySelectorAll(".file").forEach((s) => obs.observe(s));
-  setActive(sections[0].id);
-
   // ---------- Human / Agent view ----------
   $("agent-md").textContent = md;
   const setMode = (agent) => {
@@ -279,10 +167,8 @@
     $("mode-agent").setAttribute("aria-pressed", String(agent));
     document.body.classList.toggle("agent-mode", agent);
   };
-  $("mode-human").onclick = () => { setMode(false); activeId = ""; };
+  $("mode-human").onclick = () => setMode(false);
   $("mode-agent").onclick = () => { setMode(true); $("agent").scrollIntoView({ behavior: "smooth" }); };
-  document.querySelector(".tree .llms").onclick = (e) => { e.preventDefault(); $("mode-agent").click(); setActive("agent"); };
-  leaves.filter((a) => a.dataset.id !== "agent").forEach((a) => a.addEventListener("click", () => setMode(false)));
   $("copy").onclick = () => copyText($("copy"), md);
 
   // ---------- Terminal: a short agent session ----------
