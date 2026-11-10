@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moein Mohsenimofidi</title>
+  <meta name="description" content="Moein Mohsenimofidi, doctoral researcher in Prof. Sebastian Baltes' software engineering group at Heidelberg University. Research on AI coding agents and context files.">
+  <link rel="alternate" type="text/markdown" href="llms.txt" title="Plain-text version for AI agents">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230d1117'/><text x='6' y='22' font-family='monospace' font-size='16' fill='%237ee787'>&gt;_</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="style.css?v=21">
+</head>
+<body>
+  <header class="titlebar">
+    <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="path mono">~/<span id="handle"></span> <span class="branch">⎇ main</span></div>
+    <button id="pal-open" class="kbd mono" aria-label="Open command palette">⌘K</button>
+    <div class="mode" role="group" aria-label="View">
+      <button id="mode-human" class="on" aria-pressed="true">Human</button>
+      <button id="mode-agent" aria-pressed="false">Agent</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="explorer">
+      <div class="explorer-head mono"><span>EXPLORER</span>
+        <span class="tree-actions"><button id="tree-expand" title="Expand all" aria-label="Expand all folders">⊞</button><button id="tree-collapse" title="Collapse all" aria-label="Collapse all folders">⊟</button></span></div>
+      <nav id="tree" class="tree mono" role="tree" aria-label="Sections"></nav>
+      <div class="outline-wrap">
+        <div class="explorer-head mono"><span>OUTLINE</span><span id="outline-file" class="outline-file"></span></div>
+        <div id="outline" class="outline mono"></div>
+      </div>
+      <nav id="social" class="social" aria-label="Profiles"></nav>
+    </aside>
+
+    <main id="main">
+      <section class="hero">
+        <div class="hero-top">
+          <div class="identity">
+            <div class="ring"><img id="avatar" class="avatar" alt="" width="140" height="140"></div>
+            <div class="who">
+              <h1 id="name"></h1>
+              <p id="role" class="role"></p>
+              <p id="group" class="group"></p>
+              <dl id="contact" class="contact mono"></dl>
+            </div>
+          </div>
+          <div class="cites" aria-label="Citations per year">
+            <div class="term-head mono"><span>$ scholar citations --by-year</span><span id="cites-src"></span></div>
+            <div id="cites-bars" class="bars mono"></div>
+            <div id="cites-stats" class="cites-stats mono"></div>
+          </div>
+        </div>
+        <div class="terminal" aria-label="Example agent session">
+          <div class="term-head mono"><span>agent session</span><span id="term-replay" class="replay" role="button" tabindex="0">↻ replay</span></div>
+          <pre id="term" class="term mono"></pre>
+        </div>
+      </section>
+
+      <div id="human"></div>
+
+      <section id="agent" class="file" hidden>
+        <div class="tab mono"><span class="ic">≡</span>llms.txt <span class="tab-note">— what an AI agent reads</span>
+          <button id="copy" class="copy mono">copy</button></div>
+        <pre id="agent-md" class="raw mono"></pre>
+      </section>
+      <footer class="colophon mono">
+        <p class="c-copy">Content © <span id="c-year"></span> <span id="c-name"></span>. All rights reserved.</p>
+        <dl id="colophon"></dl>
+      </footer>
+    </main>
+  </div>
+
+  <div id="peek" class="peek" hidden></div>
+
+  <div id="palette" class="palette" hidden>
+    <div class="pal-box" role="dialog" aria-modal="true" aria-label="Command palette">
+      <div class="pal-in mono"><span>&gt;</span><input id="pal-input" type="text" placeholder="jump to a section, open a paper, copy bibtex…" autocomplete="off" spellcheck="false" role="combobox" aria-controls="pal-list" aria-expanded="true"></div>
+      <ul id="pal-list" class="pal-list mono" role="listbox"></ul>
+      <div class="pal-foot mono">↑↓ select · enter run · esc close</div>
+    </div>
+  </div>
+
+  <footer class="statusbar mono">
+    <span>⎇ main</span><span id="stats"></span><span class="grow"></span>
+    <span id="loc"></span><span>UTF-8</span><a href="llms.txt">llms.txt</a>
+  </footer>
+
+  <script src="content.js?v=21"></script>
+  <script src="markdown.js?v=21"></script>
+  <script src="bibtex.js?v=21"></script>
+  <script src="app.js?v=21"></script>
+</body>
+</html>

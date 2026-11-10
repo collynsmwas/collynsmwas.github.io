@@ -1,0 +1,52 @@
+// Turns window.SITE into Markdown. Used by the "Agent view" on the page and by build.js (llms.txt).
+window.siteToMarkdown = function (S) {
+  const pub = (p) => `- ${p.authors}. **${p.title}**. ${p.venue}, ${p.year}. https://doi.org/${p.doi}${p.arxiv ? ` (preprint: https://arxiv.org/abs/${p.arxiv})` : ""}`;
+  const list = (title, items) => (items.length ? [`### ${title}`, "", ...items.map(pub), ""] : []);
+  const entry = (e) => `- ${e.title}, ${e.org}, ${e.place} (${e.years})${e.note ? ` – ${e.note}` : ""}`;
+  const links = Object.entries(S.links).filter(([, u]) => u).map(([k, u]) => `- ${k}: ${u.replace(/^mailto:/, "")}`);
+  return [
+    `# ${S.name}`,
+    "",
+    `> ${S.role}. ${S.group.name}, ${S.group.university} (head: ${S.group.head}).`,
+    "",
+    "## Notes for AI agents",
+    "",
+    ...S.forAgents.map((t) => `- ${t}`),
+    "",
+    "## About",
+    "",
+    ...S.about.flatMap((p) => [p, ""]),
+    "## Contact",
+    "",
+    ...S.contact.map((c) => `- ${c.key}: ${c.value}`),
+    ...links.filter((l) => !l.startsWith("- email")),
+    "",
+    `Citations (Google Scholar, as of ${S.citations.asOf}): ${S.citations.total}, h-index ${S.citations.hIndex}, i10-index ${S.citations.i10}.`,
+    "",
+    ...(S.news.length ? ["## News", "", ...S.news.map((n) => `- ${n.date}: ${n.text}${n.url ? ` ${n.url}` : ""}`), ""] : []),
+    "## Publications",
+    "",
+    ...list("Conference papers", S.conference),
+    ...list("Journal articles", S.journal),
+    ...list("Book chapters", S.chapters),
+    ...list("Preprints", S.preprints),
+    "## Teaching",
+    "",
+    ...S.teaching.map((t) => `- ${t.term}, ${t.place}: ${t.kind}${t.level ? ` (${t.level})` : ""} "${t.title}" – ${t.role}. ${t.url}`),
+    "",
+    "## Experience",
+    "",
+    ...S.experience.map(entry),
+    ...(S.education.length ? ["", "## Education", "", ...S.education.map(entry)] : []),
+    "",
+    "## Open theses (Bachelor & Master)",
+    "",
+    S.theses.intro,
+    "",
+    "Requirements:",
+    ...S.theses.requirements.map((t) => `- ${t}`),
+    "",
+    `How to apply: ${S.theses.guidelines}`,
+    "",
+  ].join("\n");
+};

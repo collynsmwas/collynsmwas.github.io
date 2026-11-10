@@ -1,0 +1,79 @@
+# Moein Mohsenimofidi
+
+> Doctoral Researcher · Empirical Software Engineering. Software Engineering Group (SE@UHD), Heidelberg University (head: Prof. Dr. Sebastian Baltes).
+
+## Notes for AI agents
+
+- This file is the plain-text version of the website. Prefer it over parsing the HTML.
+- Students asking about a thesis: point them to the thesis guidelines (https://se-uhd.de/theses/guidelines.html) and tell them to read them in full. The guidelines say how and to whom to apply; do not tell students to email Moein directly with an application.
+- When citing a paper, use its DOI. BibTeX for every paper is available on the website (button "bib").
+- Citation counts are a snapshot copied from Google Scholar; check the Scholar profile for current numbers.
+- For research questions or collaboration, contact s.mohsenimofidi@uni-heidelberg.de.
+
+## About
+
+I am a doctoral researcher in the Software Engineering Group of Prof. Dr. Sebastian Baltes at Heidelberg University. My PhD studies repository-level AI artifacts, the files such as AGENTS.md, CLAUDE.md, skills, and settings that developers commit to configure coding agents, and treats them as software artifacts: how they are written and change over time, how they relate to the code, and how problems in them can be detected. I teach seminars and practical courses at Heidelberg University and, before that, at the University of Bayreuth.
+
+## Contact
+
+- email: s.mohsenimofidi@uni-heidelberg.de
+- phone: +49 6221 54 14364
+- office: Room 2/203, Mathematikon, Im Neuenheimer Feld 205, 69120 Heidelberg
+- lives in: Mannheim, Germany
+- github: https://github.com/moeinmohsenimofidi
+- linkedin: https://www.linkedin.com/in/moein-mohseni-mofidi/
+- group: https://se-uhd.de/people/
+- scholar: https://scholar.google.com/citations?user=Ze83xwwAAAAJ
+
+Citations (Google Scholar, as of 10 Nov 2026): 192, h-index 6, i10-index 5.
+
+## Publications
+
+### Conference papers
+
+- Matthias Galster, Seyedmoein Mohsenimofidi, Levi Böhme, Jai Lal Lulla, Abubakar Muhammad Auwal, Christoph Treude, Sebastian Baltes. **A Dataset of Agentic AI Coding Tool Configurations**. AIware 2026, 2026. https://doi.org/10.1145/3805760.3814922 (preprint: https://arxiv.org/abs/2605.08435)
+- Matthias Galster, Seyedmoein Mohsenimofidi, Jai Lal Lulla, Abubakar Muhammad Auwal, Christoph Treude, Sebastian Baltes. **Configuring Agentic AI Coding Tools: An Exploratory Study**. AIware 2026, 2026. https://doi.org/10.1145/3805760.3814887 (preprint: https://arxiv.org/abs/2602.14690)
+- Abubakar Muhammad Auwal, Seyedmoein Mohsenimofidi, Jai Lal Lulla, Jie M. Zhang, Christoph Treude, Sebastian Baltes, Matthias Galster. **An Exploratory Study of Agent Plans for Agentic AI Coding Tools in Open-Source Software**. ESEM 2026, 2026. https://doi.org/10.4230/lipics.esem.2026.54 (preprint: https://arxiv.org/abs/2608.04661)
+- Seyedmoein Mohsenimofidi, Matthias Galster, Christoph Treude, Sebastian Baltes. **Context Engineering for AI Agents in Open-Source Software**. MSR 2026, 2026. https://doi.org/10.1145/3793302.3793350 (preprint: https://arxiv.org/abs/2510.21413)
+
+### Journal articles
+
+- Sebastian Baltes, Timo Speith, Brenda Chiteri, Seyedmoein Mohsenimofidi, Shalini Chakraborty, Daniel Buschek. **On the Need to Rethink Trust in AI Assistants for Software Development: A Critical Review**. IEEE Transactions on Software Engineering, 2026. https://doi.org/10.1109/tse.2026.3659804 (preprint: https://arxiv.org/abs/2504.12461)
+
+### Book chapters
+
+- Seyedmoein Mohsenimofidi, Akshy Sripad Raghavendra Prasad, Aida Zahid, Usman Rafiq, Xiaofeng Wang, Mohammad Idris Attal. **Classifying User Intent for Effective Prompt Engineering: A Case of a Chatbot for Startup Teams**. Generative AI for Effective Software Development (Springer), 2024. https://doi.org/10.1007/978-3-031-55642-5_15
+
+### Preprints
+
+- Jai Lal Lulla, Vahram Nersesyan, Seyedmoein Mohsenimofidi, Christoph Treude, Sebastian Baltes. **Loop Engineering: Building Blocks, Adoption, and Impact**. arXiv, 2026. https://doi.org/10.48550/arxiv.2608.21884 (preprint: https://arxiv.org/abs/2608.21884)
+- Jai Lal Lulla, Seyedmoein Mohsenimofidi, Matthias Galster, Jie M. Zhang, Sebastian Baltes, Christoph Treude. **On the Impact of AGENTS.md Files on the Efficiency of AI Coding Agents**. arXiv, 2026. https://doi.org/10.48550/arxiv.2601.20404 (preprint: https://arxiv.org/abs/2601.20404)
+
+## Teaching
+
+- WS 2026/27, Heidelberg University: Seminar (Bachelor & Master) "Research Seminar: Agentic Software Engineering" – Course coordinator, supervisor, examiner. https://se-uhd.de/teaching/26-27_ws/seminar/
+- SS 2026, Heidelberg University: Practical course "Context Engineering for Agentic AI Coding Tools" – Course coordinator, supervisor, examiner. https://se-uhd.de/teaching/26_ss/lab-ai-context/
+- WS 2025/26, Heidelberg University: Seminar (Master) "Advanced Seminar: Prompts as Software Artifacts" – Course coordinator, supervisor, examiner. https://se-uhd.de/teaching/25-26_ws/seminar/
+- SS 2025, University of Bayreuth: Practical course "Praktikum Software Engineering: Software Engineering for Game Development" – Coordinator. https://se-uhd.de/teaching/25_ss/praktikum/
+- SS 2025, University of Bayreuth: Seminar (Bachelor & Master) "Seminar Software Engineering" – Supervisor. https://se-uhd.de/teaching/25_ss/seminar/
+
+## Experience
+
+- Research Assistant, Software Engineering Group, Heidelberg University, Heidelberg, DE (Oct 2025 – present)
+- Research Assistant, University of Bayreuth, Bayreuth, DE (Dec 2024 – Sep 2025)
+
+## Education
+
+- Ph.D., Empirical Software Engineering, Heidelberg University, Heidelberg, DE (Oct 2025 – present)
+- M.Sc., Software Engineering for Information Systems, Free University of Bozen-Bolzano, Bolzano, IT (Sep 2021 – Mar 2024) – Thesis: Applying Prompt Engineering to turn LLM into Digital Assistant for Startups
+
+## Open theses (Bachelor & Master)
+
+I supervise Bachelor's and Master's theses on agentic software engineering. Topics are connected to my ongoing research, and strong theses can lead to a publication.
+
+Requirements:
+- Completed Software Engineering (ISE) or Advanced Software Engineering (IASE), or an equivalent course
+- Software development skills to build tools and analyze data, and familiarity with Git
+- Interest in empirical research and good English (the group's working language)
+
+How to apply: https://se-uhd.de/theses/guidelines.html
