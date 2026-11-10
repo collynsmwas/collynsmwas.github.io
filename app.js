@@ -56,10 +56,11 @@
   const fileBox = (y, name) => `<g class="d-file" transform="translate(40 ${y})"><rect width="150" height="30" rx="6"/><text x="12" y="20">${name}</text></g>`;
   const DIAGRAM = `
     <figure class="diagram">
-      <svg viewBox="0 0 660 215" role="img" aria-labelledby="dg-t">
-        <title id="dg-t">Instruction files such as AGENTS.md, CLAUDE.md, skills and settings feed into a coding agent, which changes the code. The files can drift from the code and contradict each other.</title>
+      <svg viewBox="0 0 660 240" role="img" aria-labelledby="dg-t">
+        <title id="dg-t">Instruction files such as AGENTS.md, CLAUDE.md, skills, settings and other configuration mechanisms feed into a coding agent, which changes the code. The files can drift from the code and contradict each other.</title>
         <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="d-head"/></marker></defs>
-        ${fileBox(20, "AGENTS.md")}${fileBox(70, "CLAUDE.md")}${fileBox(120, ".claude/skills/")}${fileBox(170, "settings.json")}
+        ${fileBox(20, "AGENTS.md")}${fileBox(70, "CLAUDE.md")}${fileBox(120, "skills/")}${fileBox(170, "settings.json")}
+        <g class="d-more" aria-label="and other configuration mechanisms"><circle cx="115" cy="212" r="2.2"/><circle cx="115" cy="221" r="2.2"/><circle cx="115" cy="230" r="2.2"/></g>
         <path class="d-conflict" d="M34 88 h-10 v50 h10"/>
         <text class="d-label d-bad" x="14" y="113" transform="rotate(-90 14 113)" text-anchor="middle">conflict</text>
         <path class="d-flow" d="M190 35 C 230 35, 240 108, 280 110" marker-end="url(#arr)"/>

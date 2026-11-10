@@ -206,6 +206,7 @@ h1 { margin: 0; font-size: 28px; line-height: 1.2; letter-spacing: -0.02em; }
 .d-code rect { stroke: var(--accent-2); }
 .d-sub { fill: var(--muted) !important; font-size: 10.5px; }
 .d-head { fill: var(--accent); }
+.d-more circle { fill: var(--muted); }
 .d-flow { fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-dasharray: 5 5; animation: flow 1.2s linear infinite; }
 @keyframes flow { to { stroke-dashoffset: -20; } }
 .d-drift { fill: none; stroke: #f85149; stroke-width: 1.6; stroke-dasharray: 3 5; }
