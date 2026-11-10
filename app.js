@@ -171,49 +171,6 @@
   $("mode-agent").onclick = () => { setMode(true); $("agent").scrollIntoView({ behavior: "smooth" }); };
   $("copy").onclick = () => copyText($("copy"), md);
 
-  // ---------- Terminal: a short agent session ----------
-  const script = [
-    ["prompt", `> ${S.agentPrompt}`],
-    ["tool", "● Read(llms.txt)"],
-    ["dim", `  ⎿ ${md.split("\n").length} lines`],
-    ["tool", "● Read(research/publications.bib)"],
-    ["dim", `  ⎿ ${nPubs} entries`],
-    ["tool", "● Grep(\"open\", theses/)"],
-    ["dim", "  ⎿ OPEN_POSITIONS.md: Bachelor & Master theses"],
-    ["tool", "● WebFetch(scholar.google.com/citations?user=Ze83xwwAAAAJ)"],
-    ["dim", "  ⎿ …"],
-  ];
-  const term = $("term");
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let run = 0;
-  async function play() {
-    const id = ++run;
-    const c = await citations;
-    script.find((l) => l[1] === "  ⎿ …" || l[1].startsWith("  ⎿ citations"))[1] =
-      `  ⎿ citations: ${c.total} · h-index: ${c.hIndex}`;
-    term.innerHTML = "";
-    for (const [cls, text] of script) {
-      const line = document.createElement("div");
-      line.className = cls.split(" ").map((x) => "t-" + x).join(" ");
-      term.appendChild(line);
-      if (reduce) { line.textContent = text; continue; }
-      const step = cls === "prompt" ? 1 : cls.startsWith("answer") ? 3 : text.length;
-      for (let i = 0; i <= text.length; i += step) {
-        if (id !== run) return;
-        line.textContent = text.slice(0, i);
-        await new Promise((r) => setTimeout(r, cls === "prompt" ? 28 : 12));
-      }
-      line.textContent = text;
-      await new Promise((r) => setTimeout(r, cls === "prompt" ? 400 : 220));
-    }
-    const cur = document.createElement("span");
-    cur.className = "cursor";
-    term.appendChild(cur);
-  }
-  $("term-replay").onclick = play;
-  $("term-replay").onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); play(); } };
-  play();
-
   // ---------- Command palette (⌘K, Ctrl+K or /) ----------
   const allPubs = [...S.conference, ...S.journal, ...S.chapters, ...S.preprints];
   const go = (id) => () => { setMode(false); $(id).scrollIntoView({ behavior: "smooth" }); };

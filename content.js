@@ -26,8 +26,6 @@ window.SITE = {
     orcid: "https://orcid.org/0009-0009-1620-2735",
   },
 
-  // Shown in the terminal at the top of the page.
-  agentPrompt: "Who is Moein and what does he work on?",
   // Source: https://se-uhd.de/people/
   contact: [
     { key: "email", value: "s.mohsenimofidi@uni-heidelberg.de", href: "mailto:s.mohsenimofidi@uni-heidelberg.de" },
