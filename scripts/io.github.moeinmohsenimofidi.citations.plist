@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Installed as ~/Library/LaunchAgents/io.github.moeinmohsenimofidi.citations.plist.
+     Runs scripts/weekly_citations.sh every Monday at 08:00; if the Mac is asleep then, it runs on wake. -->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>io.github.moeinmohsenimofidi.citations</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/moein/Desktop/personal_website/scripts/weekly_citations.sh</string>
+  </array>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key>
+    <integer>1</integer>
+    <key>Hour</key>
+    <integer>8</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>/Users/moein/Library/Logs/personal-website-citations.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/moein/Library/Logs/personal-website-citations.log</string>
+</dict>
+</plist>
