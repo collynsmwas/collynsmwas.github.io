@@ -145,27 +145,27 @@ window.SITE = {
   // Source: se-uhd.github.io teaching pages (not linked: the course pages need a password).
   teaching: [
     {
-      term: "WS 2026/27", place: "Heidelberg University", kind: "Seminar", level: "Bachelor & Master",
+      term: "Winter semester 2026/27", place: "Heidelberg University", kind: "Seminar", level: "Bachelor & Master",
       title: "Research Seminar: Agentic Software Engineering",
       role: "Course coordinator, supervisor, examiner",
     },
     {
-      term: "SS 2026", place: "Heidelberg University", kind: "Practical course", level: "",
+      term: "Summer semester 2026", place: "Heidelberg University", kind: "Practical course", level: "",
       title: "Context Engineering for Agentic AI Coding Tools",
       role: "Course coordinator, supervisor, examiner",
     },
     {
-      term: "WS 2025/26", place: "Heidelberg University", kind: "Seminar", level: "Master",
+      term: "Winter semester 2025/26", place: "Heidelberg University", kind: "Seminar", level: "Master",
       title: "Advanced Seminar: Prompts as Software Artifacts",
       role: "Course coordinator, supervisor, examiner",
     },
     {
-      term: "SS 2025", place: "University of Bayreuth", kind: "Practical course", level: "",
+      term: "Summer semester 2025", place: "University of Bayreuth", kind: "Practical course", level: "",
       title: "Praktikum Software Engineering: Software Engineering for Game Development",
       role: "Coordinator",
     },
     {
-      term: "SS 2025", place: "University of Bayreuth", kind: "Seminar", level: "Bachelor & Master",
+      term: "Summer semester 2025", place: "University of Bayreuth", kind: "Seminar", level: "Bachelor & Master",
       title: "Seminar Software Engineering",
       role: "Supervisor",
     },

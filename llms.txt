@@ -52,11 +52,11 @@ Citations (Google Scholar, as of 10 Nov 2026): 192, h-index 6, i10-index 5.
 
 ## Teaching
 
-- WS 2026/27, Heidelberg University: Seminar (Bachelor & Master) "Research Seminar: Agentic Software Engineering" – Course coordinator, supervisor, examiner.
-- SS 2026, Heidelberg University: Practical course "Context Engineering for Agentic AI Coding Tools" – Course coordinator, supervisor, examiner.
-- WS 2025/26, Heidelberg University: Seminar (Master) "Advanced Seminar: Prompts as Software Artifacts" – Course coordinator, supervisor, examiner.
-- SS 2025, University of Bayreuth: Practical course "Praktikum Software Engineering: Software Engineering for Game Development" – Coordinator.
-- SS 2025, University of Bayreuth: Seminar (Bachelor & Master) "Seminar Software Engineering" – Supervisor.
+- Winter semester 2026/27, Heidelberg University: Seminar (Bachelor & Master) "Research Seminar: Agentic Software Engineering" – Course coordinator, supervisor, examiner.
+- Summer semester 2026, Heidelberg University: Practical course "Context Engineering for Agentic AI Coding Tools" – Course coordinator, supervisor, examiner.
+- Winter semester 2025/26, Heidelberg University: Seminar (Master) "Advanced Seminar: Prompts as Software Artifacts" – Course coordinator, supervisor, examiner.
+- Summer semester 2025, University of Bayreuth: Practical course "Praktikum Software Engineering: Software Engineering for Game Development" – Coordinator.
+- Summer semester 2025, University of Bayreuth: Seminar (Bachelor & Master) "Seminar Software Engineering" – Supervisor.
 
 ## Experience
 
