@@ -135,7 +135,7 @@
 
   $("human").innerHTML = sections.map((s) => `
     <section class="file" id="${s.id}">
-      <div class="tab mono"><span class="ic">${s.icon}</span>${esc(s.path)}${s.badge ? `<span class="badge">${s.badge}</span>` : ""}</div>
+      <div class="tab mono"><span class="ic">${s.icon}</span><span class="path-txt">${esc(s.path)}</span>${s.badge ? `<span class="badge">${s.badge}</span>` : ""}</div>
       <div class="body">${s.html}</div>
     </section>`).join("");
 
@@ -217,6 +217,51 @@
   list.addEventListener("click", (e) => { const li = e.target.closest("li[data-i]"); if (li) runSel(+li.dataset.i); });
   pal.addEventListener("click", (e) => { if (e.target === pal) closePal(); });
   $("pal-open").addEventListener("click", openPal);
+
+  // ---------- Scroll animations (each runs once, when a section first comes into view) ----------
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
+    document.body.classList.add("anim");
+    const files = [...document.querySelectorAll("#human .file")];
+
+    // Entries inside a section appear one after another.
+    files.forEach((sec) => sec.querySelectorAll(".pub, .course, .entry, .checks li, .log li, .body > h3, .banner, .cta, .feed-empty")
+      .forEach((el, i) => { el.classList.add("rise"); el.style.setProperty("--i", Math.min(i, 12)); }));
+
+    // README diagram builds up: input files, the dots, arrows, agent, code, then the problems.
+    const svg = document.querySelector(".diagram svg");
+    if (svg) {
+      const order = [".d-file:not(.d-code)", ".d-more", ".d-flow", ".d-agent", ".d-code", ".d-conflict, .d-drift, .d-bad"];
+      let step = 0;
+      order.forEach((sel) => {
+        const els = [...svg.querySelectorAll(sel)];
+        const each = sel === ".d-file:not(.d-code)";
+        els.forEach((el) => { el.dataset.step = ""; el.style.setProperty("--s", step); if (each) step++; });
+        if (!each) step++;
+      });
+    }
+
+    // The file name in each tab header types itself out.
+    const tabs = files.map((sec) => { const t = sec.querySelector(".path-txt"); t.dataset.full = t.textContent; t.textContent = ""; return t; });
+    const typeTab = (t) => {
+      let i = 0;
+      t.classList.add("typing");
+      const tick = () => { t.textContent = t.dataset.full.slice(0, ++i); i < t.dataset.full.length ? setTimeout(tick, 28) : t.classList.remove("typing"); };
+      tick();
+    };
+
+    const io = new IntersectionObserver((items) => {
+      for (const it of items) {
+        if (!it.isIntersecting) continue;
+        const sec = it.target;
+        io.unobserve(sec);
+        sec.classList.add("in");
+        typeTab(tabs[files.indexOf(sec)]);
+        // Thesis checklist ticks itself off.
+        sec.querySelectorAll(".checks .box").forEach((b, i) => setTimeout(() => { b.textContent = "[✓]"; b.classList.add("done"); }, 900 + i * 380));
+      }
+    }, { rootMargin: "0px 0px -8% 0px" });
+    files.forEach((sec) => io.observe(sec));
+  }
 
   // Sections are rendered by this script, so jump to a #hash link after rendering.
   if (location.hash === "#agent") $("mode-agent").click();

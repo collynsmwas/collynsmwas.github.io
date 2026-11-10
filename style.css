@@ -241,6 +241,22 @@ h1 { margin: 0; font-size: 28px; line-height: 1.2; letter-spacing: -0.02em; }
 .colophon a:hover { color: var(--accent-2); }
 .colophon .c-copy { margin: 0 0 4px; }
 
+/* scroll animations (only with body.anim, which is not set for reduced motion) */
+.anim #human .file { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .7s cubic-bezier(.2, .8, .2, 1); }
+.anim #human .file.in { opacity: 1; transform: none; }
+.anim .rise { opacity: 0; transform: translateY(10px); transition: opacity .45s ease, transform .45s ease; transition-delay: calc(180ms + var(--i) * 70ms); }
+.anim .file.in .rise { opacity: 1; transform: none; }
+.anim .path-txt.typing::after { content: "▍"; color: var(--accent); animation: blink .8s steps(1) infinite; }
+.anim .diagram [data-step] { opacity: 0; transition: opacity .5s ease; transition-delay: calc(250ms + var(--s) * 200ms); }
+.anim .file.in .diagram [data-step] { opacity: 1; }
+.box { transition: color .3s; }
+.box.done { color: var(--accent); font-weight: 700; }
+.anim .hero { animation: hero-in .8s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes hero-in { from { opacity: 0; transform: translateY(12px); } }
+@property --ring { syntax: "<angle>"; inherits: false; initial-value: 210deg; }
+.anim .ring { background: conic-gradient(from var(--ring), var(--accent), var(--accent-2), var(--accent-3), var(--accent)); animation: ring 10s linear infinite; }
+@keyframes ring { to { --ring: 570deg; } }
+
 /* agent view */
 .copy { margin-left: auto; font-size: 11.5px; padding: 3px 10px; border-radius: 6px; border: 1px solid var(--border); background: var(--card); color: var(--text); cursor: pointer; }
 .raw { margin: 0; padding: 18px 22px; font-size: 12.5px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; color: var(--text); }
