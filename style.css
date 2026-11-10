@@ -178,6 +178,8 @@ h1 { margin: 0; font-size: 28px; line-height: 1.2; letter-spacing: -0.02em; }
 .plinks a:hover, .bib-btn:hover, .bib-btn[aria-expanded="true"] { color: var(--accent); border-color: var(--accent); text-decoration: none; }
 .bib { position: relative; margin-top: 8px; }
 .bib pre { margin: 0; padding: 12px 14px; border-radius: 8px; background: #0a0d12; color: #c9d1d9; font-size: 11.5px; line-height: 1.55; overflow-x: auto; }
+.bib-src { font-size: 11px; color: var(--muted); margin-top: 4px; text-align: right; }
+.bib-src a { color: var(--muted); text-decoration: underline; }
 .bib-copy { position: absolute; top: 8px; right: 8px; font-size: 11px; padding: 2px 8px; border-radius: 5px; border: 1px solid #2a3140; background: #121722; color: #c9d1d9; cursor: pointer; }
 
 /* changelog */

@@ -71,8 +71,6 @@
         <g class="d-file d-code" transform="translate(480 88)"><rect width="160" height="52" rx="10"/><text x="80" y="23" text-anchor="middle">code &amp; pull requests</text><text class="d-sub" x="80" y="40" text-anchor="middle">src/, tests/</text></g>
         <path class="d-drift" d="M190 30 C 330 -6, 520 4, 560 86"/>
         <text class="d-label d-bad" x="375" y="46" text-anchor="middle">drift: stale reference to the code</text>
-        <text class="d-label" x="460" y="182" text-anchor="middle">How are these files written, how do they change,</text>
-        <text class="d-label" x="460" y="200" text-anchor="middle">and how can problems in them be detected?</text>
       </svg>
     </figure>`;
 
@@ -92,7 +90,7 @@
         ${p.arxiv ? ext(`https://arxiv.org/pdf/${p.arxiv}`, "pdf") + ext(`https://arxiv.org/abs/${p.arxiv}`, "arXiv") : ""}
         ${BIB[p.doi] ? `<button class="bib-btn" data-doi="${esc(p.doi)}" aria-expanded="false">bib</button>` : ""}
       </div>
-      ${BIB[p.doi] ? `<div class="bib" hidden><button class="bib-copy mono">copy</button><pre class="mono">${esc(BIB[p.doi])}</pre></div>` : ""}
+      ${BIB[p.doi] ? `<div class="bib" hidden><button class="bib-copy mono">copy</button><pre class="mono">${esc(BIB[p.doi])}</pre><div class="bib-src mono">source: ${DBLP[p.doi] ? ext(DBLP[p.doi].match(/biburl\s*=\s*\{([^}]*)\.bib\}/)[1], "dblp") : ext("https://doi.org/" + p.doi, "doi.org")}</div></div>` : ""}
     </article>`).join("");
   const entries = (label, list) => !list.length ? "" : `<h3 class="mono">// ${label}</h3>` + list.map((e) => `
     <div class="entry">
@@ -100,7 +98,9 @@
       <div class="side mono">${esc(e.years)}<br>${esc(e.place)}</div>
     </div>`).join("");
 
-  const BIB = window.BIBTEX || {};
+  // dblp entries where dblp has the paper, doi.org entries otherwise.
+  const DBLP = window.DBLP_BIBTEX || {};
+  const BIB = { ...(window.BIBTEX || {}), ...DBLP };
   const T = S.theses;
   const sections = [
     { id: "about", path: "README.md", icon: "M↓", html: S.about.map((p) => `<p>${esc(p)}</p>`).join("") + DIAGRAM },
