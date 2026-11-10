@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <!-- Installed as ~/Library/LaunchAgents/io.github.moeinmohsenimofidi.citations.plist.
      Runs scripts/weekly_citations.sh from a separate clone in ~/.personal-website-citations
-     (background jobs may not read ~/Desktop) every Monday at 08:00; if the Mac is asleep then, it runs on wake. -->
+     (background jobs may not read ~/Desktop) every Monday at 12:00; if the Mac is asleep then, it runs on wake. -->
 <plist version="1.0">
 <dict>
   <key>Label</key>
@@ -17,7 +17,7 @@
     <key>Weekday</key>
     <integer>1</integer>
     <key>Hour</key>
-    <integer>8</integer>
+    <integer>12</integer>
     <key>Minute</key>
     <integer>0</integer>
   </dict>
