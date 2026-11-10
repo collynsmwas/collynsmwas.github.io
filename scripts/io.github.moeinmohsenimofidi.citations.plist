@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <!-- Installed as ~/Library/LaunchAgents/io.github.moeinmohsenimofidi.citations.plist.
-     Runs scripts/weekly_citations.sh every Monday at 08:00; if the Mac is asleep then, it runs on wake. -->
+     Runs scripts/weekly_citations.sh from a separate clone in ~/.personal-website-citations
+     (background jobs may not read ~/Desktop) every Monday at 08:00; if the Mac is asleep then, it runs on wake. -->
 <plist version="1.0">
 <dict>
   <key>Label</key>
@@ -9,7 +10,7 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>/Users/moein/Desktop/personal_website/scripts/weekly_citations.sh</string>
+    <string>/Users/moein/.personal-website-citations/scripts/weekly_citations.sh</string>
   </array>
   <key>StartCalendarInterval</key>
   <dict>
