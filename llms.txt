@@ -24,6 +24,7 @@ I am a doctoral researcher in the Software Engineering Group of Prof. Dr. Sebast
 - linkedin: https://www.linkedin.com/in/moein-mohseni-mofidi/
 - group: https://se-uhd.de/people/
 - scholar: https://scholar.google.com/citations?user=Ze83xwwAAAAJ
+- orcid: https://orcid.org/0009-0009-1620-2735
 
 Citations (Google Scholar, as of 10 Nov 2026): 192, h-index 6, i10-index 5.
 

@@ -23,7 +23,7 @@ window.SITE = {
     group: "https://se-uhd.de/people/",
     email: "mailto:s.mohsenimofidi@uni-heidelberg.de",
     scholar: "https://scholar.google.com/citations?user=Ze83xwwAAAAJ",
-    orcid: "", // TODO: ORCID URL
+    orcid: "https://orcid.org/0009-0009-1620-2735",
   },
 
   // Shown in the terminal at the top of the page.
