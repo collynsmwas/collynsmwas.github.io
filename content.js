@@ -142,37 +142,32 @@ window.SITE = {
     note: "Please read the guidelines in full before you apply. They describe what to include in your application and whom to send it to.",
   },
 
-  // Source: se-uhd.github.io teaching pages.
+  // Source: se-uhd.github.io teaching pages (not linked: the course pages need a password).
   teaching: [
     {
       term: "WS 2026/27", place: "Heidelberg University", kind: "Seminar", level: "Bachelor & Master",
       title: "Research Seminar: Agentic Software Engineering",
       role: "Course coordinator, supervisor, examiner",
-      url: "https://se-uhd.de/teaching/26-27_ws/seminar/",
     },
     {
       term: "SS 2026", place: "Heidelberg University", kind: "Practical course", level: "",
       title: "Context Engineering for Agentic AI Coding Tools",
       role: "Course coordinator, supervisor, examiner",
-      url: "https://se-uhd.de/teaching/26_ss/lab-ai-context/",
     },
     {
       term: "WS 2025/26", place: "Heidelberg University", kind: "Seminar", level: "Master",
       title: "Advanced Seminar: Prompts as Software Artifacts",
       role: "Course coordinator, supervisor, examiner",
-      url: "https://se-uhd.de/teaching/25-26_ws/seminar/",
     },
     {
       term: "SS 2025", place: "University of Bayreuth", kind: "Practical course", level: "",
       title: "Praktikum Software Engineering: Software Engineering for Game Development",
       role: "Coordinator",
-      url: "https://se-uhd.de/teaching/25_ss/praktikum/",
     },
     {
       term: "SS 2025", place: "University of Bayreuth", kind: "Seminar", level: "Bachelor & Master",
       title: "Seminar Software Engineering",
       role: "Supervisor",
-      url: "https://se-uhd.de/teaching/25_ss/seminar/",
     },
   ],
 

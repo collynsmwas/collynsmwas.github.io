@@ -32,7 +32,7 @@ window.siteToMarkdown = function (S) {
     ...list("Preprints", S.preprints),
     "## Teaching",
     "",
-    ...S.teaching.map((t) => `- ${t.term}, ${t.place}: ${t.kind}${t.level ? ` (${t.level})` : ""} "${t.title}" – ${t.role}. ${t.url}`),
+    ...S.teaching.map((t) => `- ${t.term}, ${t.place}: ${t.kind}${t.level ? ` (${t.level})` : ""} "${t.title}" – ${t.role}.`),
     "",
     "## Experience",
     "",

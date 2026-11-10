@@ -117,7 +117,7 @@
       <div class="course">
         <div class="semester mono">${esc(t.term)}</div>
         <div>
-          <div class="title">${ext(t.url, esc(t.title))}</div>
+          <div class="title">${esc(t.title)}</div>
           <div class="sub"><span class="kind mono">${esc(t.kind)}</span>${t.level ? ` · ${esc(t.level)}` : ""} · ${esc(t.place)}</div>
           <div class="sub">${esc(t.role)}</div>
         </div>
